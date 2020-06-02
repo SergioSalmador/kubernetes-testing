@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: hello-word
+  namespace: app-1
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: hello-word
+  template:
+    metadata:
+      labels:
+        app: hello-word
+    spec:
+      containers:
+      - name: hello-word-app
+        image: sergiosalmador95/tomcat-sergio:8.0
+        #imagePullPolicy: IfNotPresent        
+        ports:
+        - containerPort: 8080
